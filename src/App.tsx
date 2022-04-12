@@ -1,5 +1,5 @@
-import ExpenseItem from './components/ExpenseItem';
 import './App.scss';
+import Expense from './components/Expense';
 
 function App() {
   interface IExpenses {
@@ -32,14 +32,7 @@ function App() {
   return (
     <div>
       <h2>Let's get started!</h2>
-      {expenses.map((item) => (
-        <ExpenseItem
-          key={item.id}
-          title={item.title}
-          date={item.date}
-          amount={item.amount}
-        />
-      ))}
+      <Expense expenses={expenses} />
     </div>
   );
 }
