@@ -1,5 +1,6 @@
 import ExpenseItem from './ExpenseItem';
 import styles from './Expense.module.scss';
+import Card from './Card';
 
 interface IExpenses {
   id: string;
@@ -9,7 +10,7 @@ interface IExpenses {
 }
 function Expense({ expenses }: any) {
   return (
-    <div className={styles.expenses}>
+    <Card className={styles.expenses}>
       {expenses.map((item: IExpenses) => (
         <ExpenseItem
           key={item.id}
@@ -18,7 +19,7 @@ function Expense({ expenses }: any) {
           amount={item.amount}
         />
       ))}
-    </div>
+    </Card>
   );
 }
 
