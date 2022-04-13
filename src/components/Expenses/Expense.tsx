@@ -1,6 +1,6 @@
 import ExpenseItem from './ExpenseItem';
 import styles from './Expense.module.scss';
-import Card from './Card';
+import Card from '../UI/Card';
 
 interface IExpenses {
   id: string;

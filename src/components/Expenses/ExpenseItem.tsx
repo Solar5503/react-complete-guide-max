@@ -1,4 +1,4 @@
-import Card from './Card';
+import Card from '../UI/Card';
 import ExpenseDate from './ExpenseDate';
 import styles from './ExpenseItem.module.scss';
 interface IProps {
