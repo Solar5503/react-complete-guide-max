@@ -3,13 +3,13 @@ import Expense from './components/Expenses/Expense';
 import NewExpense from './components/NewExpense/NewExpense';
 
 function App() {
-  interface IExpenses {
+  interface IExpense {
     id: string;
     title: string;
     amount: number;
     date: Date;
   }
-  const expenses: IExpenses[] = [
+  const expenses: IExpense[] = [
     {
       id: 'e1',
       title: 'Toilet Paper',
@@ -30,9 +30,14 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+
+  const addExpenseHandler = (expense: IExpense) => {
+    console.log('In App.js');
+    console.log(expense);
+  };
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expense expenses={expenses} />
     </div>
   );
