@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styles from './ExpenseForm.module.scss';
 
 interface IInput {
@@ -18,25 +18,25 @@ const ExpenseForm = ({ onSaveExpenseData }: IFunc) => {
     date: new Date(),
   });
 
-  const titleChangeHandler = (e: any) => {
+  const titleChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setExpenseData((prevState) => {
       return { ...prevState, title: e.target.value };
     });
   };
-  const amountChangeHandler = (e: any) => {
+  const amountChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     // setUserInput({ ...userInput, enteredAmount: e.target.value });
     setExpenseData((prevState) => {
       return { ...prevState, amount: +e.target.value };
     });
   };
-  const dateEnteredHandler = (e: any) => {
+  const dateEnteredHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     // setUserInput({ ...userInput, enteredDate: e.target.value });
     setExpenseData((prevState) => {
       return { ...prevState, date: new Date(e.target.value) };
     });
   };
 
-  const submitHandler = (e: any) => {
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onSaveExpenseData(expenseData);
     setExpenseData({ title: '', amount: 0, date: new Date() });
