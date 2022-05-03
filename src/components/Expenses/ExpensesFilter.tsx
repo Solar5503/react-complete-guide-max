@@ -19,6 +19,7 @@ const ExpensesFilter = ({ onChangeYear, selected }: IProps) => {
       <div className={styles.expensesFilter__control}>
         <label>Filter by year</label>
         <select value={selected} onChange={changeYearHandler}>
+          <option value="0">Show All</option>
           <option value="2022">2022</option>
           <option value="2021">2021</option>
           <option value="2020">2020</option>

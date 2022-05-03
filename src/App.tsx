@@ -3,6 +3,13 @@ import './App.scss';
 import Expense from './components/Expenses/Expense';
 import NewExpense from './components/NewExpense/NewExpense';
 
+interface IExpense {
+  id: string;
+  title: string;
+  amount: number;
+  date: Date;
+}
+
 const DUMMY_EXPENSES = [
   {
     id: 'e1',
@@ -26,13 +33,6 @@ const DUMMY_EXPENSES = [
 ];
 
 function App() {
-  interface IExpense {
-    id: string;
-    title: string;
-    amount: number;
-    date: Date;
-  }
-
   const [expenses, setExpenses] = useState<IExpense[]>(DUMMY_EXPENSES);
 
   const addExpenseHandler = (newExpense: IExpense) => {
@@ -40,6 +40,7 @@ function App() {
       return [...prevExpenses, newExpense];
     });
   };
+
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
