@@ -5,7 +5,7 @@ interface IProps {
 
 function ExpenseDate({ date }: IProps) {
   const month = date.toLocaleString('en-US', { month: 'long' });
-  const day = date.toLocaleString('en-US', { year: '2-digit' });
+  const day = date.toLocaleString('en-US', { day: '2-digit' });
   const year = date.getFullYear();
 
   return (
