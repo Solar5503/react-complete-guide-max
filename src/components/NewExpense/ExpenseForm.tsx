@@ -7,11 +7,18 @@ interface IInput {
   date: Date;
 }
 
-interface IFunc {
-  onSaveExpenseData: (expenseData: IInput) => void;
+interface IFuncSaveExpenseData {
+  (expenseData: IInput): void;
+}
+interface IFuncShowForm {
+  (openForm: boolean): void;
+}
+interface IProps {
+  onSaveExpenseData: IFuncSaveExpenseData;
+  onShowForm: IFuncShowForm;
 }
 
-const ExpenseForm = ({ onSaveExpenseData }: IFunc) => {
+const ExpenseForm = ({ onSaveExpenseData, onShowForm }: IProps) => {
   const [expenseData, setExpenseData] = useState<IInput>({
     title: '',
     amount: 0,
@@ -40,6 +47,7 @@ const ExpenseForm = ({ onSaveExpenseData }: IFunc) => {
     e.preventDefault();
     onSaveExpenseData(expenseData);
     setExpenseData({ title: '', amount: 0, date: new Date() });
+    onShowForm(false);
   };
 
   return (
@@ -75,6 +83,9 @@ const ExpenseForm = ({ onSaveExpenseData }: IFunc) => {
         </div>
       </div>
       <div className={styles.newExpense__actions}>
+        <button type="button" onClick={() => onShowForm(false)}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>

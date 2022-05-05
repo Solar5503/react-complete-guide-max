@@ -1,10 +1,10 @@
-import ExpenseItem from './ExpenseItem';
-import styles from './Expense.module.scss';
+import React, { useState } from 'react';
 import Card from '../UI/Card';
+import styles from './Expense.module.scss';
 import ExpensesFilter from './ExpensesFilter';
-import { useState } from 'react';
+import ExpensesList from './ExpensesList';
 
-interface IExpenses {
+interface IExpense {
   id: string;
   title: string;
   amount: number;
@@ -18,29 +18,15 @@ function Expense({ expenses }: any) {
   };
 
   const filteredExpenses = expenses.filter(
-    (item: IExpenses) => item.date.getFullYear() === choseYear
+    (item: IExpense) => item.date.getFullYear() === choseYear
   );
 
   const isShowAll = choseYear !== 0 ? filteredExpenses : expenses;
 
-  let expensesContent: JSX.Element = (
-    <p style={{ color: 'white', textAlign: 'center' }}>No expenses found</p>
-  );
-  if (isShowAll.length > 0) {
-    expensesContent = isShowAll.map((item: IExpenses) => (
-      <ExpenseItem
-        key={item.id}
-        title={item.title}
-        date={item.date}
-        amount={item.amount}
-      />
-    ));
-  }
-
   return (
     <Card className={styles.expenses}>
       <ExpensesFilter selected={choseYear} onChangeYear={filterYearHandler} />
-      {expensesContent}
+      <ExpensesList expenses={isShowAll} />
     </Card>
   );
 }

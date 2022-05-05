@@ -10,7 +10,7 @@ interface IExpense {
   date: Date;
 }
 
-const DUMMY_EXPENSES = [
+const DUMMY_EXPENSES: IExpense[] = [
   {
     id: 'e1',
     title: 'Toilet Paper',

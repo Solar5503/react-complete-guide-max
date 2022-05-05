@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import ExpenseForm from './ExpenseForm';
 import styles from './NewExpense.module.scss';
 interface IProps {
@@ -17,6 +18,8 @@ interface IFunc {
 }
 
 const NewExpense = ({ onAddExpense }: IFunc) => {
+  const [openForm, setOpenForm] = useState<boolean>(false);
+
   const saveExpenseDataHandler = (enteredExpenseData: IProps) => {
     const expenseData = {
       ...enteredExpenseData,
@@ -24,9 +27,18 @@ const NewExpense = ({ onAddExpense }: IFunc) => {
     };
     onAddExpense(expenseData);
   };
+
   return (
     <div className={styles.newExpense}>
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      {openForm && (
+        <ExpenseForm
+          onSaveExpenseData={saveExpenseDataHandler}
+          onShowForm={setOpenForm}
+        />
+      )}
+      {!openForm && (
+        <button onClick={() => setOpenForm(true)}>Add New Expense</button>
+      )}
     </div>
   );
 };
