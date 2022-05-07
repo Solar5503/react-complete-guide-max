@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Card from '../UI/Card';
 import styles from './Expense.module.scss';
+import ExpensesChart from './ExpensesChart';
 import ExpensesFilter from './ExpensesFilter';
 import ExpensesList from './ExpensesList';
 
@@ -26,6 +27,7 @@ function Expense({ expenses }: any) {
   return (
     <Card className={styles.expenses}>
       <ExpensesFilter selected={choseYear} onChangeYear={filterYearHandler} />
+      <ExpensesChart expenses={isShowAll} />
       <ExpensesList expenses={isShowAll} />
     </Card>
   );
