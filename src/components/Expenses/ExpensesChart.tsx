@@ -1,11 +1,12 @@
 import Chart from '../Chart/Chart';
+import { IExpenses } from './Expense';
 
-interface IChart {
+export interface IChart {
   label: string;
   value: number;
 }
 
-const ExpensesChart = ({ expenses }: any) => {
+const ExpensesChart = ({ expenses }: IExpenses) => {
   const chartDataPoints: IChart[] = [
     { label: 'Jan', value: 0 },
     { label: 'Feb', value: 0 },

@@ -3,7 +3,7 @@ import './App.scss';
 import Expense from './components/Expenses/Expense';
 import NewExpense from './components/NewExpense/NewExpense';
 
-interface IExpense {
+export interface IExpense {
   id: string;
   title: string;
   amount: number;
